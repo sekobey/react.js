@@ -2,53 +2,34 @@ import React, {Component} from "react";
 import "./App.css";
 import Collapse from "./Collapse"
 
+import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom'
+
+import Header from './Header';
+import Footer from './Footer';
+import Home from './Home';
+import About from './About';
+import Works from './Works';
+import Contact from './Contact';
+import Error from './Error';
+
 class App extends Component {
     render() {
         return (
             <div className="App">
-                <header>
-                    <a href="#"> SeKoBeY</a>
-                    <nav>
-                        <section className="container">
-                            <aside className="link-border">
-                                <a className="active">
-                                    hello world
-                                </a>
-                            </aside>
-                            <aside className="link-border">
-                                <a href="/home"> home </a>
-                                <a href="/about"> about </a>
-                                <a href="/works"> works </a>
-                                <a href="/contact"> contact </a>
-                            </aside>
-                        </section>
-                    </nav>
-                </header>
-                <main>
-                    <div className="fadeInUp">
-                        <header className="container header fadeInUp">
-                            <h1>Lorem ipsum</h1>
-                            <h2>alksjdlşkasdlşaksdlşasşdkaşlskdalşskdlşaksdşaskdşaskdasldkaşlskd
-                                alksjdlşkasdlşaksdlşasşdkaşlskdalşskdlşaksdşaskdşaskdasldkaşlskd
-                                alksjdlşkasdlşaksdlşasşdkaşlskdalşskdlşaksdşaskdşaskdasldkaşlskd </h2>
-                            <a href="#" className="btn dark"></a>
-                        </header>
-
+                <Router>
+                    <div>
+                        <Header/>
+                        <Switch>
+                            <Route path="/" exact component={Home} />
+                            <Route path="/home" exact component={Home} />
+                            <Route path="/about" exact component={About} />
+                            <Route path="/works" exact component={Works} />
+                            <Route path="/contact" exact component={Contact} />
+                            <Route component={Error} />
+                        </Switch>
+                        <Footer/>
                     </div>
-                    <Collapse title="Serkan Collapse Title" content="askldjalksjdklasjdlaskdj"/>
-                </main>
-                <footer>
-                    <section className="container">
-                        <aside className="link-border">
-                            <a className="active">
-                                twitter
-                            </a>
-                            <a className="active">
-                                facebook
-                            </a>
-                        </aside>
-                    </section>
-                </footer>
+                </Router>
             </div>
         );
     }
